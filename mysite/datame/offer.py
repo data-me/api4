@@ -131,9 +131,10 @@ class Offer_view(APIView):
             if(thisCompany == offer.company):
                 applies = Apply.objects.all().filter(offer = offer)
                 if(applies.first() == None):
-                    offer.delete()
+                    offer.delete()   
                     return JsonResponse({"message":"Successfully deleted offer"})
                 else:
+                    # ERROR HERE AT DELETEING OFFER
                     return JsonResponse({"message":"This offer has at least one application"})
             else:
                 return JsonResponse({"message":"You do not own this offer"})
