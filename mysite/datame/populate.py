@@ -50,16 +50,16 @@ def populate(request):
         offer5 = Offer.objects.create(title='Uso medio de Firefox en 2018',description='Se necesita el tratamiento de los datos del uso medio de Mozilla Firefox en el año 2018.',price_offered =450,
                                       creation_date=datetime.datetime.utcnow(),limit_time = datetime.datetime(2020,3,2,10,0,0,0,pytz.UTC), finished = False, files = 'https://github.com/data-me/api2/blob/Sprint2/offerfile5.csv',contract="No puede difundir los datos",company= company02)
 
-        apply1 = Apply.objects.create(title='Propuesta de Jack Smith para Luz 2017',description='Mi propuesta consiste en el uso de métodos que Machine Learning no permite',
+        apply1 = Apply.objects.create(title='Solicitud de Jack Smith para Luz 2017',description='Mi propuesta consistirá en el uso de métodos que Machine Learning no permite',
                                       date=datetime.datetime(2019,3,27,16,30,0,0,pytz.UTC),status='RE',dataScientist = dataScientist2, offer = offer2)
-        apply2 = Apply.objects.create(title='Propuesta de John Doe para Luz 2017',description='Mi propuesta consiste en el uso de Machine Learning',
+        apply2 = Apply.objects.create(title='Solicitud de John Doe para Luz 2017',description='Mi propuesta consistirá en el uso de Machine Learning',
                                       date=datetime.datetime(2019,3,28,23,13,0,0,pytz.UTC),status='AC',dataScientist = dataScientist1,offer = offer2)
-        apply3 = Apply.objects.create(title='Propuesta de John Doe para Luz 2016',description='Mi propuesta consiste en el uso de Machine Learning',
+        apply3 = Apply.objects.create(title='Solicitud de John Doe para Luz 2016',description='Mi propuesta consistirá en el uso de Machine Learning',
                                       date=datetime.datetime(2019,4,1,23,13,0,0,pytz.UTC),status='PE',dataScientist = dataScientist1,offer = offer3)
-        apply4 = Apply.objects.create(title='Propuesta de Jack Smith para Luz 2018',description='Mi propuesta consiste en el uso de métodos que Machine Learning no permite',
+        apply4 = Apply.objects.create(title='Solicitud de Jack Smith para Luz 2018',description='Mi propuesta consistirá en el uso de métodos que Machine Learning no permite',
                                       date=datetime.datetime(2019,4,1,12,0,0,0,pytz.UTC),status='PE',dataScientist = dataScientist2,offer = offer1)
 
-        apply5 = Apply.objects.create(title='Propuesta de John Doe para Firefox 2018',description='Mi propuesta consiste en el uso de Machine Learning',
+        apply5 = Apply.objects.create(title='Solicitud de John Doe para Firefox 2018',description='Mi propuesta consistirá en el uso de Machine Learning',
                                       date=datetime.datetime(2019,4,1,12,0,0,0,pytz.UTC),status='AC',dataScientist = dataScientist1,offer = offer5)
 
         submit1 = Submition.objects.create(dataScientist = dataScientist1, offer = offer2, file = 'https://github.com/data-me/api2/blob/Sprint2/submissionfile1.csv',comments = 'Se realizó correctamente y antes del tiempo estimado.',status = 'AC')
