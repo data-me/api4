@@ -135,7 +135,7 @@ class Offer_view(APIView):
                     return JsonResponse({"message":"Successfully deleted offer"})
                 else:
                     # ERROR HERE AT DELETEING OFFER
-                    return JsonResponse({"message":"This offer has at least one application"})
+                    return JsonResponse({"message":"This offer has at least one application / Esta oferta tiene al menos una solicitud"})
             else:
                 return JsonResponse({"message":"You do not own this offer"})
         except Exception as e:
@@ -156,9 +156,9 @@ class change_Offer(APIView):
                 print(applies)
                 if(applies.first() == None):
                     Offer.objects.all().filter(pk = offer_id).update(title=title, description=description)
-                    return JsonResponse({"message": "Offer updated"})
+                    return JsonResponse({"message": "Offer updated / Oferta modificada"})
                 else:
-                    return JsonResponse({"message":"This offer has at least one application, you cannot edit it"})                   
+                    return JsonResponse({"message":"This offer has at least one application, you cannot edit it / Esta oferta tiene al menos una solicitud, no puede editarla"})                   
             else:
                 return JsonResponse({"message":"You do not own this offer"})
         except Exception as e:
