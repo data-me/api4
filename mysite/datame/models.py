@@ -80,6 +80,8 @@ class Offer(models.Model):
 
     def __str__(self):
         return self.title
+    def get_month(self):
+        return self.creation_date
 
 class Submition(models.Model):
 
@@ -118,6 +120,8 @@ class Apply(models.Model):
 
     def __str__(self):
         return self.title
+    def get_month(self):
+        return self.date.month
 
 # Curriculum vitae
 class CV(models.Model):

@@ -247,6 +247,13 @@ class delete_me(APIView):
             traceback.print_exc()
             return JsonResponse({"message": "Sorry! Something went wrong deleting your user...",
                                 "success": False})
+class dashboard(APIView):
+    def get(self, request, format=None):
+        try:
+            dataset1 = []
+        except:
+            traceback.print_exc()
+            return JsonResponse({"message": "Sorry! Something went wrong"})
 
 class change_info(APIView):
     def post(self, request, format=None):
