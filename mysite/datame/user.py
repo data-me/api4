@@ -53,7 +53,7 @@ class Company_view(APIView):
             print('logged_user: ' + str(logged_user))
             try:
                     companyId = data['companyId']
-                    thiscompany = Company.objects.all().filter(pk = companyId).values()
+                    thiscompany = Company.objects.all().filter(pk = companyId).values('name', 'description', 'nif', 'logo', 'user__username')
 
             except Exception as e:
                     companyRecuperada = Company.objects.all().get(user = logged_user)
@@ -70,10 +70,10 @@ class DataScientist_view(APIView):
             print('logged_user: ' + str(logged_user))
             try:
                     dataScientistId = data['dataScientistId']
-                    thisds = DataScientist.objects.all().filter(pk = dataScientistId).values('name','surname','photo','address','phone','user__email')
+                    thisds = DataScientist.objects.all().filter(pk = dataScientistId).values('name','surname','photo','address','phone','user__email', 'user__username')
 
             except Exception as e:
-                    thisds = DataScientist.objects.all().filter(user = user_logged).values('name','surname','photo','address','phone','user__email')
+                    thisds = DataScientist.objects.all().filter(user = user_logged).values('name','surname','photo','address','phone','user__email', 'user__username')
 
 
             return JsonResponse(list(thisds), safe=False)
@@ -322,4 +322,3 @@ class whoami(APIView):
                             return JsonResponse({'user_type': 'admin','ads':'false'})
                     except:
                         return JsonResponse({'user_type': 'None','ads':'true'})
-
