@@ -182,7 +182,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = 'http://localhost:8080'
+STATIC_URL = '/static/'
 
 PAYPAL_MODE= "sandbox"
 PAYPAL_CLIENT_ID = "AQnKuEyaCgxZsEBPC-aq3glrpVK1dcTUUbvjkmnguZOM1WLQnsEU-y7i2oh3VkM_Xm4AfbJQx8AKdiYF"
