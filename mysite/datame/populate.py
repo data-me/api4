@@ -76,17 +76,12 @@ def populate(request):
         section1 = Section.objects.create(name = sectionName1,cv = cv1 )
         section2 = Section.objects.create(name = sectionName3,cv = cv1 )
         section3 = Section.objects.create(name = sectionName2,cv = cv2 )
-        section4 = Section.objects.create(name = sectionName2,cv = cv1 )
 
         item1 = Item.objects.create(name='Estudiante en la US', section=section1, description='Estudié en la ETSII, US durante 4 años de duro trabajo',
-                                    entity = 'ETSII - US',date_start=datetime.datetime(2014,3,28), date_finish= datetime.datetime(2019,6,28))
+                                    entity = 'ETSII - US',date_start=datetime.datetime(2014,3,28), date_finish= datetime.datetime(2018,6,28))
 
         item2 = Item.objects.create(name='Sobre mí', section=section2, description="Soy un buen compañero, puedo trabajar de forma cooperativa sin problemas.",
-                                    entity ='Yo',date_start=datetime.datetime(1997,1,18), date_finish= datetime.datetime(2019,6,28))
-
-        item3 = Item.objects.create(name='Trabajando en Everis', section=section4, description="Estoy actualmente trabajando en Everis procesando datos de los usuarios.",
-                                    entity ='',date_start=datetime.datetime(2015,11,29),
-                                     date_finish= None)
+                                    entity ='Yo',date_start=datetime.datetime(1997,1,18), date_finish= datetime.datetime(2018,6,28))
 
         item4 = Item.objects.create(name='Ingeniero en Endesa', section=section3, description="He trabajado en Endesa a cargo de los datos de las facturas.",
                                     entity = 'Ensesa',date_start=datetime.datetime(2013,3,11), date_finish= datetime.datetime(2017,1,2))
