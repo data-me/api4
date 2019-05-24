@@ -53,7 +53,7 @@ class Company_view(APIView):
             print('logged_user: ' + str(logged_user))
             try:
                     companyId = data['companyId']
-                    thiscompany = Company.objects.all().filter(pk = companyId).values('name', 'description', 'nif', 'logo', 'user__username')
+                    thiscompany = Company.objects.all().filter(pk = companyId).values()
 
             except Exception as e:
                     companyRecuperada = Company.objects.all().get(user = logged_user)
@@ -70,10 +70,10 @@ class DataScientist_view(APIView):
             print('logged_user: ' + str(logged_user))
             try:
                     dataScientistId = data['dataScientistId']
-                    thisds = DataScientist.objects.all().filter(pk = dataScientistId).values('name','surname','photo','address','phone','user__email', 'user__username')
+                    thisds = DataScientist.objects.all().filter(pk = dataScientistId).values('name','surname','photo','address','phone','user__email')
 
             except Exception as e:
-                    thisds = DataScientist.objects.all().filter(user = user_logged).values('name','surname','photo','address','phone','user__email', 'user__username')
+                    thisds = DataScientist.objects.all().filter(user = user_logged).values('name','surname','photo','address','phone','user__email')
 
 
             return JsonResponse(list(thisds), safe=False)
@@ -122,6 +122,18 @@ class Register_view(APIView):
 
                     new_message = Message.objects.create(title=title, body=body, moment=moment, receiver=receiver, sender=senderId, isAlert= isAlert)
 
+                     # Welcome message
+                    title = 'Welcome to DataMe! | ¡Bienvenido a DataMe!'
+                    body = 'Welcome '+str(newDs.name)+"! it's a pleasure have you here. | ¡Bienvenido " +str(newDs.name)+"! Es un placer tenerte con nosotros"
+                    moment = datetime.datetime.utcnow()
+                    username = newUser.username
+                    isAlert = False
+                    receiver = User.objects.all().get(username = username)
+                    senderId = User.objects.all().get(username = 'admin')
+
+                    new_message = Message.objects.create(title=title, body=body, moment=moment, receiver=receiver, sender=senderId, isAlert= isAlert)
+
+
                     print('Sucessfully created new alert message')
 
                 if (type == 'C'):
@@ -149,6 +161,17 @@ class Register_view(APIView):
                     senderId = newUser
 
                     new_message = Message.objects.create(title=title, body=body, moment=moment, receiver=receiver, sender=senderId, isAlert= isAlert)
+
+                    title = 'Welcome to DataMe! | ¡Bienvenido a DataMe!'
+                    body = 'Welcome '+str(newC.name)+"! it's a pleasure have you here. | ¡Bienvenido " +str(newC.name)+"! Es un placer tenerte con nosotros."
+                    moment = datetime.datetime.utcnow()
+                    username = newUser.username
+                    isAlert = False
+                    receiver = User.objects.all().get(username = username)
+                    senderId = User.objects.all().get(username = 'admin')
+
+                    new_message = Message.objects.create(title=title, body=body, moment=moment, receiver=receiver, sender=senderId, isAlert= isAlert)
+
 
                     print('Sucessfully created new alert message')
             return res
@@ -224,6 +247,14 @@ class delete_me(APIView):
             traceback.print_exc()
             return JsonResponse({"message": "Sorry! Something went wrong deleting your user...",
                                 "success": False})
+class dashboard(APIView):
+    def get(self, request, format=None):
+        try:
+            dataset1 = []
+            apliesPerDate = Apply.objects.all().values('')
+        except:
+            traceback.print_exc()
+            return JsonResponse({"message": "Sorry! Something went wrong"})
 
 class change_info(APIView):
     def post(self, request, format=None):
