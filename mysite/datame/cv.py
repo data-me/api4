@@ -188,20 +188,23 @@ class Item_view(APIView):
                             return JsonResponse({"message":"Sorry, the starting date must be before the ending date!"})
                     else:
                         try:
-                            print('olawenas')
+                            
                             item_tosave = Item.objects.all().get(pk = data['itemid'])
 
                             item_tosave.name = data['name']
                             item_tosave.description = data['description']
                             item_tosave.entity = data['entity']
                             item_tosave.date_start = date_start
-                            item_tosave.date_finish = date_finish
+                            item_tosave.date_finish = None
+                        
 
                             item_tosave.save()
+                            
+                            
 
                             return JsonResponse({"message":"Successfully edited item"})
-                        except:
-                            print('olawenas')
+                        except Exception as e:
+                          
                             itemname = data['name']
                             description = data['description']
                             entity = data['entity']
