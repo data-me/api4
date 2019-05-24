@@ -183,7 +183,7 @@ class Offer_admin_view(APIView):
                         'description' : str(offer.get('description')),
                         'price_offered' : str(offer.get('price_offered')),
                         'creation_date' : str(offer.get('creation_date')),
-                        'limit_date' : str(offer.get('limit_date')),
+                        'limit_time' : str(offer.get('limit_time')),
                         'finished' : str(offer.get('finished')),
                         'files' : str(offer.get('files')),
                         'contract' : str(offer.get('contract')),
