@@ -13,19 +13,17 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 from dotenv import load_dotenv
 from datetime import timedelta
+# Env variables===
+load_dotenv()
 
 # Sending email for GDPR
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'ivandega301095@gmail.com'
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASS')
+EMAIL_HOST_USER = 'alertsdatame@gmail.com'
+EMAIL_HOST_PASSWORD = os.getenv('GMAIL')
 #=======================
-
-
-# Env variables===
-load_dotenv()
 
 
 

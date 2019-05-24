@@ -18,6 +18,7 @@ class Notification_view(APIView):
             subject = data['subject']
             message = data['body']
             email_from = settings.EMAIL_HOST_USER # Email sender
+            print('Email from:', settings.EMAIL_HOST_PASSWORD)
             # Collecting all emails
             all_users = User.objects.all().exclude(id=request.user.id)
 
@@ -33,13 +34,14 @@ class Notification_view(APIView):
                         receiver = []
                         receiver.append(recipient)
                         print('================================')
-                        send_mail( subject, message, email_from, receiver)
+                        send_mail( subject, message, email_from, receiver, fail_silently=False)
                         print('A message was sent')
                         print('================================')
-                except:
+                except Exception as e:
+                    print(e)
                     print('Message was not sent to:', recipient)
             return JsonResponse({"message":"Successfully created new notifications for users"})
-        except:
+        except Exception as e:
             return JsonResponse({"message":"Oops, something went wrong"})
 
 
@@ -81,7 +83,7 @@ class Message_view(APIView):
             user = request.user
             messages = []
             try:
-                messages = Message.objects.all().filter(receiver = user).values()
+                messages = Message.objects.all().filter(receiver = user).order_by('-moment').values()
                 Message.objects.all().filter(receiver = user).update(viewed = True)
                 
             except:
