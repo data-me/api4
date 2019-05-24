@@ -121,10 +121,10 @@ class Register_view(APIView):
                     senderId = newUser
 
                     new_message = Message.objects.create(title=title, body=body, moment=moment, receiver=receiver, sender=senderId, isAlert= isAlert)
-                    
+
                      # Welcome message
                     title = 'Welcome to DataMe! | ¡Bienvenido a DataMe!'
-                    body = 'Welcome '+str(newDs.name)+"! it's a pleasure have you here. | ¡Bienvenido" +str(newDs.name)+"! Es un placer tenerte con nosotros"
+                    body = 'Welcome '+str(newDs.name)+"! it's a pleasure have you here. | ¡Bienvenido " +str(newDs.name)+"! Es un placer tenerte con nosotros"
                     moment = datetime.datetime.utcnow()
                     username = newUser.username
                     isAlert = False
@@ -323,4 +323,3 @@ class whoami(APIView):
                             return JsonResponse({'user_type': 'admin','ads':'false'})
                     except:
                         return JsonResponse({'user_type': 'None','ads':'true'})
-
